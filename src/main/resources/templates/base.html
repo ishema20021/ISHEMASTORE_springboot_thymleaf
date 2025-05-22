@@ -19,7 +19,8 @@
 </head>
 <style>
 
-	html, body {
+	<style>
+   html, body {
        height: 100%;
        margin: 0;
    }
@@ -35,7 +36,7 @@
 
    /* Footer Styles - Modified */
    .footer-section {
-       background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+       background: #4a2c2a; /* Changed to dark reddish-brown */
        color: white;
        padding: 0.5rem 0; /* Further reduced vertical padding */
        flex-shrink: 0;
@@ -55,7 +56,7 @@
    }
    /* Footer Styles */
    .footer-section {
-       background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+       background: #4a2c2a; /* Changed to dark reddish-brown */
        color: white;
        position: relative;
        overflow: hidden;
@@ -96,7 +97,7 @@
        bottom: 0;
        width: 50px;
        height: 2px;
-       background-color: #2563eb;
+       background-color: #343a40;
    }
 
    .footer-section ul li {
@@ -160,14 +161,15 @@
            justify-content: center !important;
        }
    }
+</style>
 
 </style>
 <body>
 	<!-- Start Navbar  -->
-	<nav class="navbar navbar-expand-lg  bg-primary fixed-top navbar-dark">
+	<nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="background-color: #2c3e50;">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#"><i
-				class="fa-solid fa-cart-shopping"></i> Ecom Store</a>
+				class="fa-solid fa-cart-shopping"></i>ISHEMA Store</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -184,7 +186,7 @@
 
 					<th:block th:unless="${user==null}">
 						<li class="nav-item" th:if="${user.role=='ROLE_ADMIN'}"><a
-							class="nav-link active" aria-current="page" href="/admin/"><i
+							class="nav-link active" aria-current="page" href="/"><i
 								class="fa-solid fa-house"></i> Home</a></li>
 
 						<li class="nav-item" th:if="${user.role=='ROLE_USER'}"><a
@@ -197,12 +199,6 @@
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/products">Product</a></li>
 
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false"> Category </a>
-						<ul class="dropdown-menu">
-							<li th:each="c:${categorys}"><a class="dropdown-item"
-								th:href="@{'/products?category='+${c.name}}">[[${c.name}]]</a></li>
 
 						</ul></li>
 
@@ -268,19 +264,19 @@
 					<div class="footer-about">
 						<a href="#" class="d-flex align-items-center mb-4 text-decoration-none">
 							<i class="fas fa-shopping-bag fa-2x text-primary me-2"></i>
-							<span class="h3 text-white mb-0">Ecom Store</span>
+							<span class="h3 text-white mb-0">Ishema Store</span>
 						</a>
 						<p class="text-light mb-4" style="font-size: 1.1rem; opacity: 0.9;">Your premier online shopping destination in Rwanda. We deliver quality products with exceptional service.</p>
 
 						<div class="social-icons">
-							<a href="#" class="icon-circle bg-primary text-white me-2"><i class="fab fa-facebook-f"></i></a>
-							<a href="#" class="icon-circle bg-primary text-white me-2"><i class="fab fa-twitter"></i></a>
-							<a href="#" class="icon-circle bg-primary text-white me-2"><i class="fab fa-instagram"></i></a>
-							<a href="#" class="icon-circle bg-primary text-white"><i class="fab fa-linkedin-in"></i></a>
+							<a href="https://www.facebook.com/" class="icon-circle bg-primary text-white me-2"><i class="fab fa-facebook-f"></i></a>
+							<a href="https://x.com/home" class="icon-circle bg-primary text-white me-2"><i class="fab fa-twitter"></i></a>
+							<a href="https://www.instagram.com/" class="icon-circle bg-primary text-white me-2"><i class="fab fa-instagram"></i></a>
+							<a href="https://www.linkedin.com/in/ishema-ngabo-ange-296b06329/" class="icon-circle bg-primary text-white"><i class="fab fa-linkedin-in"></i></a>
 						</div>
 					</div>
 				</div>
-
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<!-- Quick Links -->
 				<div class="col-lg-2 col-md-6">
 					<h5 class="text-white mb-4" style="font-size: 1.25rem;">Quick Links</h5>
@@ -288,23 +284,10 @@
 						<li class="mb-2"><a href="/" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Home</a></li>
 						<li class="mb-2"><a href="/products" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Products</a></li>
 						<li class="mb-2"><a href="/about" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">About Us</a></li>
-						<li class="mb-2"><a href="/contact" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Contact</a></li>
-						<li class="mb-2"><a href="/blog" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Blog</a></li>
-						<li><a href="/faq" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">FAQs</a></li>
-					</ul>
-				</div>
 
-				<!-- Categories -->
-				<div class="col-lg-2 col-md-6">
-					<h5 class="text-white mb-4" style="font-size: 1.25rem;">Categories</h5>
-					<ul class="list-unstyled">
-						<li class="mb-2"><a href="/products?category=Electronics" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Electronics</a></li>
-						<li class="mb-2"><a href="/products?category=Fashion" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Fashion</a></li>
-						<li class="mb-2"><a href="/products?category=Home" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Home & Garden</a></li>
-						<li class="mb-2"><a href="/products?category=Beauty" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Beauty</a></li>
-						<li><a href="/products?category=Sports" class="text-light text-decoration-none hover-text-primary" style="font-size: 1.05rem; opacity: 0.9;">Sports & Outdoors</a></li>
 					</ul>
 				</div>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
 				<!-- Contact Info -->
 				<div class="col-lg-4 col-md-6">
@@ -316,11 +299,11 @@
 						</li>
 						<li class="mb-3 d-flex align-items-start">
 							<i class="fas fa-phone-alt text-primary mt-1 me-3" style="font-size: 1.1rem;"></i>
-							<span style="font-size: 1.05rem;"><a href="tel:+250792397681" class="text-light text-decoration-none hover-text-primary">+250 792 397 681</a></span>
+							<span style="font-size: 1.05rem;"><a href="tel:+250792397681" class="text-light text-decoration-none hover-text-primary">+250 783990705</a></span>
 						</li>
 						<li class="mb-3 d-flex align-items-start">
 							<i class="fas fa-envelope text-primary mt-1 me-3" style="font-size: 1.1rem;"></i>
-							<span style="font-size: 1.05rem;"><a href="mailto:muhirehillary720@gmail.com" class="text-light text-decoration-none hover-text-primary">muhirehillary720@gmail.com</a></span>
+							<span style="font-size: 1.05rem;"><a href="https://mail.google.com/mail/u/0/#inbox" class="text-light text-decoration-none hover-text-primary">inange74@gmail.com</a></span>
 						</li>
 						<li class="d-flex align-items-start">
 							<i class="fas fa-clock text-primary mt-1 me-3" style="font-size: 1.1rem;"></i>
@@ -331,7 +314,6 @@
 			</div>
 
 			<hr class="my-4 bg-secondary" style="opacity: 0.2;">
-
 			<!-- Payment Methods and Copyright -->
 			<div class="row align-items-center">
 				<div class="col-md-6 mb-3 mb-md-0">
@@ -345,7 +327,7 @@
 					</div>
 				</div>
 				<div class="col-md-6 text-md-end">
-					<p class="text-light mb-0" style="font-size: 1.05rem; opacity: 0.9;">&copy; 2023 Ecom Store. All rights reserved.</p>
+					<p class="text-light mb-0" style="font-size: 1.05rem; opacity: 0.9;">&copy; 2025 Ishema Store. All rights reserved.</p>
 				</div>
 			</div>
 		</div>
