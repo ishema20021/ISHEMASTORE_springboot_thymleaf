@@ -20,14 +20,14 @@ This project is a simple e-commerce web application developed as a Mini Project 
 
 ## Requirements
 
-### Backend (Spring Boot) Requirements - /7pts
+### Backend (Spring Boot) Requirements 
 1. Define roles (e.g., `USER`, `ADMIN`) and restrict access based on these roles using Spring Security.
 2. Create APIs to manage products (CRUD operations) with entities (`Product`) and repositories for product management.
 3. Implement APIs for managing orders (placing orders, order history).
 4. Define entities (`Order`) and establish relationships with users and products.
 5. Design and implement RESTful APIs for frontend interaction with JSON responses, using appropriate HTTP methods (GET, POST, PUT, DELETE) for CRUD operations.
 
-### Frontend (Thymeleaf) Requirements - /18pts
+### Frontend (Thymeleaf) Requirements 
 1. Design and implement UI components for displaying products, user authentication, shopping cart, and order management.
 2. Use libraries like Bootstrap or Material-UI for styling.
 3. Integrate with backend APIs to fetch product information, authenticate users, and manage orders.
@@ -37,7 +37,7 @@ This project is a simple e-commerce web application developed as a Mini Project 
 7. Validate user inputs on the server-side using Spring validations.
 8. Manage static resources (CSS, JavaScript) for styling and interactivity.
 
-### Additional Requirements - /15pts
+### Additional Requirements 
 1. Implement error handling mechanisms for both backend and frontend.
 2. Display meaningful error messages to users.
 3. Deploy the application on a cloud platform (e.g., AWS, Azure, or Heroku).
