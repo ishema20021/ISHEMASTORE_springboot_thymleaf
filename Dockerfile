@@ -1,30 +1,30 @@
-# Stage 1: Build the application using Maven
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+# 1️⃣ Use official Maven image with JDK 21 to build the app
+FROM maven:3.9.8-eclipse-temurin-21 AS build
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy the pom.xml and download dependencies
+# Copy pom.xml and download dependencies first (to leverage Docker cache)
 COPY pom.xml .
 RUN mvn dependency:go-offline
 
-# Copy the source code
+# Copy the full source code
 COPY src ./src
 
-# Package the application, skipping tests
+# Package the application (will generate target/*.jar)
 RUN mvn clean package -DskipTests
 
-# Stage 2: Run the application using a lightweight JDK image
-FROM eclipse-temurin:17-jdk-alpine
+# 2️⃣ Use Eclipse Temurin JDK 21 image to run the app
+FROM eclipse-temurin:21-jdk-alpine
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy the JAR file from the build stage
+# Copy the jar from the builder stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Expose port 8080
+# Expose port 8080 (Render uses dynamic ports, but this is optional)
 EXPOSE 8080
 
-# Run the application
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Run the app, binding to PORT env var if provided by Render
+ENTRYPOINT ["java", "-jar", "app.jar"]
